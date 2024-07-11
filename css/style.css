@@ -29,24 +29,19 @@
   left: 20px;
   top: 30%;
   color: #fff;
-  /* z-index: 9999; */
-  /* height: 100vh; */
   font-size: 25px;
   cursor: pointer;
 }
 nav #leftMenu {
   color: #fff;
-  width: 250px;
+  width: 0;
   height: 100%;
-  /* display: none; */
   position: absolute;
   top: 0;
-  /* left: 0; */
   bottom: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  /* padding-top: 60px; */
 }
 nav #leftMenu .fa-xmark {
   font-size: 2rem;
@@ -70,4 +65,22 @@ nav #leftMenu ul a {
 nav #leftMenu ul li:hover a {
   color: green;
   font-weight: bold;
+}
+
+/* ========== Slider Down ========== */
+#sliderDown h3 {
+  padding: 10px;
+  margin: 0 auto;
+  width: 70%;
+  background-color: green;
+  cursor: pointer;
+  color: white;
+}
+#sliderDown .inner {
+  width: 70%;
+  margin: auto;
+  display: none;
+}
+#sliderDown .inner table {
+  margin-bottom: 0;
 }
