@@ -8,6 +8,10 @@
   bottom: 0;
 }
 
+section {
+  padding-block: 2rem;
+}
+
 /* ========== Home Section ========== */
 #home {
   background-image: url("../images/aqsa.jpg");
@@ -63,7 +67,7 @@ nav #leftMenu ul a {
   transition: 0.3s;
 }
 nav #leftMenu ul li:hover a {
-  color: green;
+  color: #6c946f;
   font-weight: bold;
 }
 
@@ -72,7 +76,7 @@ nav #leftMenu ul li:hover a {
   padding: 10px;
   margin: 0 auto;
   width: 70%;
-  background-color: green;
+  background-color: #6c946f;
   cursor: pointer;
   color: white;
 }
@@ -92,7 +96,6 @@ nav #leftMenu ul li:hover a {
   background-size: cover;
   background-position: center;
   min-height: 500px;
-  padding-block: 2rem;
 }
 
 #prayerTimings .content {
@@ -117,4 +120,40 @@ nav #leftMenu ul li:hover a {
   border-radius: 30px;
   padding: 0 10px;
   font-size: 20px;
+}
+
+/* ========== footer ========== */
+footer {
+  background-color: #6c946f;
+  padding: 50px 0;
+}
+footer .social {
+  list-style: none;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-left: 0;
+}
+footer .social .fa-brands {
+  /* color: #009ad8; */
+}
+footer .fa-circle {
+  color: #1e202b;
+  transition: 0.3s;
+}
+footer .fa-brands {
+  transition: 0.3s;
+}
+footer .fa-stack:hover .fa-brands {
+  color: #fff;
+}
+footer .fa-stack:hover .fa-circle {
+  color: #d62e33;
+}
+
+.personal {
+  background-color: gold;
+  margin: 0;
+  text-align: center;
+  padding: 1rem;
 }

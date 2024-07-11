@@ -21,9 +21,7 @@ async function getPrayerTimings(){
         const response = await fetch(apiLInk)
         const data = await response.json()
         console.log(data)
-        displayPrayerTimings(data)
-        // console.log(data.data.timings)
-        // console.log(data.data.date.hijri.day)
+        setInterval(function(){displayPrayerTimings(data)}, 1000)
     }catch (error) {
         console.error(error);  
     }
@@ -33,6 +31,7 @@ function displayPrayerTimings(data){
     const date = new Date();
     let hours = date.getHours()
     let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
     let dayName = date.toLocaleDateString(location, {weekday: 'long'})
     let dayNum = date.getDate()
     let monthName = date.toLocaleDateString(location, {month: 'long'})
@@ -43,7 +42,9 @@ function displayPrayerTimings(data){
 
     let cartona = ''
     cartona = `
-        <span class="time" style="float: right;">${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}</span>
+        <span class="time" style="float: right;">
+        ${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}:${seconds < 10 ? "0" + seconds : seconds}
+        </span>
         <h3>${dayName}</h3>
         <h3>${hijri.day} ${hijri.month.en} ${hijri.year} A.H.</h3>
         <h3>${dayNum} ${monthName} ${year}</h3>
@@ -85,7 +86,10 @@ function nextPray(data){
         // console.log(arr[i])
         next.push(arr[i])
     }
-    console.log(next[0])
+    if(next[0] == undefined){
+        next = [pray01 + (24*60)]
+    }
+    // console.log(next[0])
     let hoursDifference = Math.floor((next[0] - currTime) / 60)
     let minsDifference = (next[0] - currTime) - (hoursDifference * 60)
 
@@ -96,3 +100,14 @@ function nextPray(data){
 getPrayerTimings()
 
 
+// ========== textarea ==========
+let maxLength = 100;
+$('textarea').keyup(function(){
+    let lengthCurr = $(this).val().length;
+    let remaining = maxLength - lengthCurr
+    if(remaining > 0){
+        $('#remainingLetters').text(remaining);
+    } else{
+        $('#remainingLetters').text('your available character finished');
+    }
+})
