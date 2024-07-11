@@ -25,7 +25,7 @@ async function getPrayerTimings(){
         // console.log(data.data.timings)
         // console.log(data.data.date.hijri.day)
     }catch (error) {
-    console.error(error);  
+        console.error(error);  
     }
 }
 
@@ -41,8 +41,9 @@ function displayPrayerTimings(data){
     let hijri = data.data.date.hijri
     let timings = data.data.timings
 
-    let cartona = `
-        <span class="time" style="float: right;">${hours}:${minutes}</span>
+    let cartona = ''
+    cartona = `
+        <span class="time" style="float: right;">${hours < 10 ? "0" + hours : hours}:${minutes < 10 ? "0" + minutes : minutes}</span>
         <h3>${dayName}</h3>
         <h3>${hijri.day} ${hijri.month.en} ${hijri.year} A.H.</h3>
         <h3>${dayNum} ${monthName} ${year}</h3>
@@ -52,16 +53,30 @@ function displayPrayerTimings(data){
             <li>Asr <span>${timings.Asr}</span></li>
             <li>Maghrib <span>${timings.Maghrib}</span></li>
             <li>Isha <span>${timings.Isha}</span></li>
-        </ul>
-        <h5>Next pray at: <span  class="time">10:00</span></h5>`
+        </ul>`
 
     calcNextPray(data)
-    document.querySelector('#prayerTimings .content').innerHTML = cartona;
+    document.querySelector('#prayerTimings .content .box').innerHTML = cartona;
 }
 
 
 
+function calcNextPray(data){
+    let now = new Date()
+    let hours = now.getHours()
+    let minutes = now.getMinutes()
 
+    let timings = data.data.timings
+    let timeAsNum = Number(timings.Isha.split(':')[0] * 60) + Number(timings.Isha.split(':')[1])
+    let currTime = hours * 60 + minutes
+
+    let hoursDifference = Math.floor((timeAsNum - currTime) / 60)
+    let minsDifference = (timeAsNum - currTime) - (hoursDifference * 60)
+
+    let differenceTime = `${((hoursDifference < 10) ? ("0" + hoursDifference) : hoursDifference)}:${((minsDifference < 10) ? ("0" + minsDifference) : minsDifference)}`
+    
+    document.querySelector('#differenceTime').innerHTML = differenceTime;
+}
 
 
 
