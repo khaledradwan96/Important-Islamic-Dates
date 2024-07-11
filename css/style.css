@@ -84,3 +84,30 @@ nav #leftMenu ul li:hover a {
 #sliderDown .inner table {
   margin-bottom: 0;
 }
+
+/* ========== Prayer Timings ========== */
+#prayerTimings {
+  background-image: url("../images/prayer.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  padding-block: 2rem;
+}
+
+#prayerTimings .content {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: fit-content;
+}
+#prayerTimings .content li {
+  font-size: 20px;
+}
+@media screen and (min-width: 1200px) {
+  #prayerTimings .content ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+}
