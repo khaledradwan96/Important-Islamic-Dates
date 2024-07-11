@@ -8,10 +8,6 @@
   bottom: 0;
 }
 
-section {
-  padding-block: 2rem;
-}
-
 /* ========== Home Section ========== */
 #home {
   background-image: url("../images/aqsa.jpg");
@@ -29,7 +25,7 @@ section {
 
 /* ========== Navbar ========== */
 #home #open-nav {
-  position: fixed;
+  position: absolute;
   left: 20px;
   top: 30%;
   color: #fff;
@@ -95,7 +91,7 @@ nav #leftMenu ul li:hover a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  padding-block: 2rem;
 }
 
 #prayerTimings .content {
@@ -133,9 +129,6 @@ footer .social {
   margin-top: 10px;
   margin-bottom: 5px;
   padding-left: 0;
-}
-footer .social .fa-brands {
-  /* color: #009ad8; */
 }
 footer .fa-circle {
   color: #1e202b;
