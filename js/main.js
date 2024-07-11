@@ -55,30 +55,43 @@ function displayPrayerTimings(data){
             <li>Isha <span>${timings.Isha}</span></li>
         </ul>`
 
-    calcNextPray(data)
+    nextPray(data)
+
     document.querySelector('#prayerTimings .content .box').innerHTML = cartona;
 }
 
-
-
-function calcNextPray(data){
+function nextPray(data){
+    // get current Time
     let now = new Date()
     let hours = now.getHours()
     let minutes = now.getMinutes()
-
-    let timings = data.data.timings
-    let timeAsNum = Number(timings.Isha.split(':')[0] * 60) + Number(timings.Isha.split(':')[1])
     let currTime = hours * 60 + minutes
+    
+    // get prays Times
+    let timings = data.data.timings
+    let pray01 = Number(timings.Fajr.split(':')[0] * 60) + Number(timings.Fajr.split(':')[1])
+    let pray02 = Number(timings.Dhuhr.split(':')[0] * 60) + Number(timings.Dhuhr.split(':')[1])
+    let pray03 = Number(timings.Asr.split(':')[0] * 60) + Number(timings.Asr.split(':')[1])
+    let pray04 = Number(timings.Maghrib.split(':')[0] * 60) + Number(timings.Maghrib.split(':')[1])
+    let pray05 = Number(timings.Isha.split(':')[0] * 60) + Number(timings.Isha.split(':')[1])
+    let arr = [pray01, pray02, pray03, pray04, pray05]
 
-    let hoursDifference = Math.floor((timeAsNum - currTime) / 60)
-    let minsDifference = (timeAsNum - currTime) - (hoursDifference * 60)
+    let next = []
+    for(let i=0; i<arr.length; i++){
+        if(currTime > arr[i]){
+            // console.log(arr[i])
+            continue;
+        }
+        // console.log(arr[i])
+        next.push(arr[i])
+    }
+    console.log(next[0])
+    let hoursDifference = Math.floor((next[0] - currTime) / 60)
+    let minsDifference = (next[0] - currTime) - (hoursDifference * 60)
 
     let differenceTime = `${((hoursDifference < 10) ? ("0" + hoursDifference) : hoursDifference)}:${((minsDifference < 10) ? ("0" + minsDifference) : minsDifference)}`
-    
     document.querySelector('#differenceTime').innerHTML = differenceTime;
 }
-
-
 
 getPrayerTimings()
 
