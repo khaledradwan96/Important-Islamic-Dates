@@ -19,7 +19,55 @@
   font-size: 3rem;
   position: relative;
   text-align: center;
-  z-index: 10;
   color: #fff;
   text-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Navbar ========== */
+#home #open-nav {
+  position: fixed;
+  left: 20px;
+  top: 30%;
+  color: #fff;
+  /* z-index: 9999; */
+  /* height: 100vh; */
+  font-size: 25px;
+  cursor: pointer;
+}
+nav #leftMenu {
+  color: #fff;
+  width: 250px;
+  height: 100%;
+  /* display: none; */
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  bottom: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  /* padding-top: 60px; */
+}
+nav #leftMenu .fa-xmark {
+  font-size: 2rem;
+  position: relative;
+  top: 20px;
+  left: 200px;
+  cursor: pointer;
+}
+nav #leftMenu ul {
+  list-style: none;
+}
+nav #leftMenu ul li {
+  padding: 20px;
+}
+nav #leftMenu ul a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 25px;
+  transition: 0.3s;
+}
+nav #leftMenu ul li:hover a {
+  color: green;
+  font-weight: bold;
 }
