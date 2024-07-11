@@ -111,3 +111,10 @@ nav #leftMenu ul li:hover a {
     list-style: none;
   }
 }
+
+#prayerTimings .content span.time {
+  background-color: gold;
+  border-radius: 30px;
+  padding: 0 10px;
+  font-size: 20px;
+}
